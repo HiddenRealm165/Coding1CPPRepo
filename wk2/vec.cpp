@@ -19,16 +19,25 @@ int main() {
     cout << "Let's learn about vectors\n";
 
     string input;
+    vector<string> favGames = {
+        "Red Dead Redepmtion 2",
+        "Pokemon Channel",
+        "One Shot",
+        "Pokemon Snap",
+        "Z.A.T.O.",
+        "Omori",
+        "Ready or Not"
+    };
 
     // to get int from an input:
         // int numberInput = stoi(input);
 
     do {
         cout << "What would you like to do?\n";
-        cout << "You can type 'push', 'find', or 'quit'.\n";
+        cout << "You can type 'push', 'find', 'remove', or 'quit'.\n";
 
         getline(cin, input); // get input from the player
-
+        
 
         if (input == "push") {
             cout << "Lets make our first vector of strings.\n";
@@ -110,6 +119,33 @@ int main() {
         } else if (input == "quit") {
             cout << "Thanks for playing!\n";
             break;
+        } else if (input == "remove") {
+            // Sort the list of games alphabetically
+            sort(favGames.begin(), favGames.end());
+
+            cout <<  "Here are your favorite games:\n";
+            
+            for (int i = 0; i < favGames.size(); i++) {
+                cout << favGames[i] << "\n";
+            }
+
+            cout << "What game would you like to remove from the list?\n";
+            getline(cin, input);
+
+            auto iter = find(favGames.begin(), favGames.end(), input);
+
+            if (iter != favGames.end()) {
+                cout << "We found the game in the list: " << *iter << "\n";
+                cout << "Removing it from the list.";
+
+                favGames.erase(iter);
+            }
+            cout << "Here is your new list of games:\n";
+            for (int i = 0; i < favGames.size(); i++) {
+                cout << favGames[i] << "\n";
+            }
+
+
         } else {
             cout << "I didn't recognize that command.\n";
         }
