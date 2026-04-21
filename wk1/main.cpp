@@ -6,7 +6,6 @@
 // 'main' or 'main.exe' to run the program.
 
 #include <iostream>
-#include <string>
 using namespace std;
 
 
